@@ -6,5 +6,5 @@ export const parseArgs = () => {
         parsedArgs[key] = value;
     })
 
-    return parsedArgs.username || "Unknown user";
+    return parsedArgs.username || null;
 }

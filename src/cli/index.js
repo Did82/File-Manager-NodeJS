@@ -1,5 +1,6 @@
 import * as readline from "readline";
 import { greetings } from "./greetings.js";
+import { commands } from "./comands/index.js";
 
 export const cli = () => {
     greetings();
@@ -9,20 +10,12 @@ export const cli = () => {
         output: process.stdout
     });
 
-    rl.question("Enter command: ", ( command ) => {
-            switch (command) {
-                case ".exit":
-                    rl.close();
-                    break;
-                case "help":
-                    console.log("Available commands: exit, help");
-                    break;
-                default:
-                    console.log(`Unknown command: ${command}`);
-                    break;
-
+    rl.on("line", ( line ) => {
+            try {
+                commands(rl, line);
+            } catch (err) {
+                console.log('Operation failed', err);
             }
-
         }
     );
 }
