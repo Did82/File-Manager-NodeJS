@@ -11,11 +11,7 @@ export const cli = () => {
     });
 
     rl.on("line", ( line ) => {
-            try {
                 commands(rl, line);
-            } catch (err) {
-                console.log('Operation failed');
-            }
         }
     );
 }

@@ -2,6 +2,7 @@ import { state } from "../../utils/state.js";
 import { ls } from "./ls/index.js";
 import os from "os";
 import { cd } from "./cd/index.js";
+import { errorHandler } from "../../utils/error.js";
 
 export const commands = ( rl, line ) => {
     const [command, ...args] = line.split(" ");
@@ -17,13 +18,10 @@ export const commands = ( rl, line ) => {
             console.log(ls(state.currentDirectory));
             break;
         case "cd":
-            console.log("Changing directory...");
+            cd(args[0]).catch(errorHandler);
             break;
         case "up":
-            cd('..')
-                .catch(err => {
-                    throw new Error("Operation failed")
-                });
+            cd('..').catch(errorHandler);
             break;
         case "cp":
             console.log("Copying files...");
