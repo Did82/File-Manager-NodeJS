@@ -14,7 +14,7 @@ export const cli = () => {
             try {
                 commands(rl, line);
             } catch (err) {
-                console.log('Operation failed', err);
+                console.log('Operation failed');
             }
         }
     );
