@@ -4,6 +4,7 @@ import os from "os";
 import { cd } from "./cd/index.js";
 import { errorHandler } from "../../utils/error.js";
 import { osInfo } from "./os/index.js";
+import { calculateHash } from "./hash/index.js";
 
 export const commands = ( rl, line ) => {
     const [command, ...args] = line.split(" ");
@@ -36,8 +37,8 @@ export const commands = ( rl, line ) => {
         case "mkdir":
             console.log("Creating directory...");
             break;
-        case "touch":
-            console.log("Creating file...");
+        case "hash":
+            calculateHash(args[0]).catch(errorHandler);
             break;
         case "cat":
             console.log("Printing file content...");

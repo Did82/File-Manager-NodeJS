@@ -1,6 +1,6 @@
 import * as readline from "readline";
 import { greetings } from "./greetings.js";
-import { commands } from "./comands/index.js";
+import { commands } from "./commands/index.js";
 
 export const cli = () => {
     greetings();

@@ -8,5 +8,5 @@ export const greetings = () => {
     console.log(`Welcome to the File Manager, ${state.username}!`);
     process.chdir(state.homedir);
     state.currentDirectory = process.cwd();
-    console.log(`Current directory: ${state.currentDirectory}`);
+    console.log(`You are currently in ${state.currentDirectory}`);
 }
