@@ -3,6 +3,7 @@ import { ls } from "./ls/index.js";
 import os from "os";
 import { cd } from "./cd/index.js";
 import { errorHandler } from "../../utils/error.js";
+import { osInfo } from "./os/index.js";
 
 export const commands = ( rl, line ) => {
     const [command, ...args] = line.split(" ");
@@ -42,7 +43,7 @@ export const commands = ( rl, line ) => {
             console.log("Printing file content...");
             break;
         case "os":
-            console.log("Printing file content...", args, os.cpus());
+            osInfo(args[0]).catch(errorHandler);
             break;
         default:
             console.log("Invalid input");
