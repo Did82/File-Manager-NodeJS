@@ -5,8 +5,9 @@ import { cd } from "./cd/index.js";
 import { errorHandler } from "../../utils/error.js";
 import { osInfo } from "./os/index.js";
 import { calculateHash } from "./hash/index.js";
+import { cat } from "./cat/index.js";
 
-export const commands = ( rl, line ) => {
+export const commands = async ( rl, line ) => {
     const [command, ...args] = line.split(" ");
     switch (command) {
         case ".exit":
@@ -41,7 +42,7 @@ export const commands = ( rl, line ) => {
             calculateHash(args[0]).catch(errorHandler);
             break;
         case "cat":
-            console.log("Printing file content...");
+            await cat(args[0]);
             break;
         case "os":
             osInfo(args[0]).catch(errorHandler);
