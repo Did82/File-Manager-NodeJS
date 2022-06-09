@@ -6,6 +6,7 @@ import { errorHandler } from "../../utils/error.js";
 import { osInfo } from "./os/index.js";
 import { calculateHash } from "./hash/index.js";
 import { cat } from "./cat/index.js";
+import { createFile } from "./add/index.js";
 
 export const commands = async ( rl, line ) => {
     const [command, ...args] = line.split(" ");
@@ -35,8 +36,8 @@ export const commands = async ( rl, line ) => {
         case "rm":
             console.log("Removing files...");
             break;
-        case "mkdir":
-            console.log("Creating directory...");
+        case "add":
+            await createFile(args[0]);
             break;
         case "hash":
             calculateHash(args[0]).catch(errorHandler);
