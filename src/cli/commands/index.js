@@ -16,7 +16,6 @@ export const commands = async ( rl, line ) => {
     const [command, ...args] = line.split(" ");
     switch (command) {
         case ".exit":
-            console.log(`Thank you for using File Manager, ${state.username}!`)
             rl.close();
             break;
         case "help":

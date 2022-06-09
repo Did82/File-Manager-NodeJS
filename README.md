@@ -10,22 +10,10 @@ npm run start -- --username=your_username
 
 ### Technical details
 
-- After starting the program displays the following text in the console  
-  `Welcome to the File Manager, Username!`
-- After program work finished (`ctrl + c` pressed or user sent `.exit` command into console) the program displays the following text in the console  
-  `Thank you for using File Manager, Username!`
-- At the start of the program and after each end of input/operation current working directory should be printed in following way:  
-  `You are currently in path_to_working_directory`
-- Starting working directory is current user's home directory (for example, on Windows it's something like `system_drive/Users/username`)
-- By default program should prompt user in console to print commands and wait for results
-- In case of unknown operation or invalid input `Invalid input` message should be shown and user should be able to enter another command
-- In case of error during execution of operation `Operation failed` message should be shown and user user should be able to enter another command
-- Attempt to perform an operation on a non-existent file or work on a non-existent path should result in the operation fail
-- User can't go upper than root directory (e.g. on Windows it's current local drive root). If user tries to do so, current working directory doesn't change
-
 List of operations and their syntax:
 - Navigation & working directory (nwd)
-    - Go upper from current directory (when you are in the root folder this operation shouldn't change working directory)
+    - Go upper from current directory (when you are in the root folder this operation shouldn't change working
+      directory)
     ```bash
     up
     ```
@@ -96,4 +84,8 @@ List of operations and their syntax:
     - Decompress file (using Brotli algorithm)
     ```bash
     decompress path_to_file path_to_destination
+    ```
+- List of commands:
+    ```shell
+    help
     ```
