@@ -8,6 +8,7 @@ import { calculateHash } from "./hash/index.js";
 import { cat } from "./cat/index.js";
 import { createFile } from "./add/index.js";
 import { renameFile } from "./rn/index.js";
+import { copyFile } from "./cp/index.js";
 
 export const commands = async ( rl, line ) => {
     const [command, ...args] = line.split(" ");
@@ -29,7 +30,7 @@ export const commands = async ( rl, line ) => {
             cd('..').catch(errorHandler);
             break;
         case "cp":
-            console.log("Copying files...");
+            await copyFile(args[0], args[1]);
             break;
         case "mv":
             console.log("Moving files...");
