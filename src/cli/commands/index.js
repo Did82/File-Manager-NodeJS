@@ -10,6 +10,7 @@ import { createFile } from "./add/index.js";
 import { renameFile } from "./rn/index.js";
 import { copyFile } from "./cp/index.js";
 import { removeFile } from "./rm/index.js";
+import { zip } from "./compress/index.js";
 
 export const commands = async ( rl, line ) => {
     const [command, ...args] = line.split(" ");
@@ -55,6 +56,12 @@ export const commands = async ( rl, line ) => {
             break;
         case "os":
             osInfo(args[0]).catch(errorHandler);
+            break;
+        case "compress":
+            await zip(args[0], args[1], command);
+            break;
+        case "decompress":
+            await zip(args[0], args[1], command);
             break;
         default:
             console.log("Invalid input");
