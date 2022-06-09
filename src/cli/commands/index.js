@@ -7,6 +7,7 @@ import { osInfo } from "./os/index.js";
 import { calculateHash } from "./hash/index.js";
 import { cat } from "./cat/index.js";
 import { createFile } from "./add/index.js";
+import { renameFile } from "./rn/index.js";
 
 export const commands = async ( rl, line ) => {
     const [command, ...args] = line.split(" ");
@@ -33,8 +34,8 @@ export const commands = async ( rl, line ) => {
         case "mv":
             console.log("Moving files...");
             break;
-        case "rm":
-            console.log("Removing files...");
+        case "rn":
+            await renameFile(args[0], args[1]);
             break;
         case "add":
             await createFile(args[0]);
