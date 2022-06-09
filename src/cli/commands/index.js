@@ -9,6 +9,7 @@ import { cat } from "./cat/index.js";
 import { createFile } from "./add/index.js";
 import { renameFile } from "./rn/index.js";
 import { copyFile } from "./cp/index.js";
+import { removeFile } from "./rm/index.js";
 
 export const commands = async ( rl, line ) => {
     const [command, ...args] = line.split(" ");
@@ -33,10 +34,15 @@ export const commands = async ( rl, line ) => {
             await copyFile(args[0], args[1]);
             break;
         case "mv":
-            console.log("Moving files...");
+            await copyFile(args[0], args[1]).then(() => {
+                removeFile(args[0]);
+            });
             break;
         case "rn":
             await renameFile(args[0], args[1]);
+            break;
+        case "rm":
+            await removeFile(args[0]);
             break;
         case "add":
             await createFile(args[0]);
