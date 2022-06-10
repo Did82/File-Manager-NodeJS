@@ -1,4 +1,5 @@
 import { createReadStream } from "fs";
+import { errorHandler } from "../../../utils/error.js";
 const { createHash } = await import('crypto');
 
 export const calculateHash = async (file) => {
@@ -11,6 +12,6 @@ export const calculateHash = async (file) => {
         console.log(hash.digest('hex'));
     });
     fileStream.on('error', ( err ) => {
-        throw new Error(`FS operation failed: ${err}`);
+        errorHandler(err);
     });
 };

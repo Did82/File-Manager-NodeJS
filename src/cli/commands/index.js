@@ -22,7 +22,7 @@ export const commands = async ( rl, line ) => {
             console.log("Available commands: .exit, up, ls, cd, cp, mv, rn, rm, add, cat, os");
             break;
         case "ls":
-            console.log(ls(state.currentDirectory));
+            await ls(state.currentDirectory);
             break;
         case "cd":
             cd(args[0]).catch(errorHandler);
