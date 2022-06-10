@@ -4,8 +4,15 @@ import { errorHandler } from "../../../utils/error.js";
 export const copyFile = async ( source, destination ) => {
     const fileName = source.split("/").pop();
     const fullPathToDestination = `${destination}/${fileName}`;
-    await fs.copyFile(source, fullPathToDestination, ( err ) => {
-            if (err) errorHandler(err);
-        }
+    const file = await fs.createReadStream(source);
+    const fileToWrite = await fs.createWriteStream(fullPathToDestination);
+    file.on("error", ( err ) => {
+        errorHandler(err);
+    }
     );
+    fileToWrite.on("error", ( err ) => {
+        errorHandler(err);
+    }
+    );
+    file.pipe(fileToWrite);
 }
