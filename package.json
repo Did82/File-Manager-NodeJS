@@ -1,0 +1,21 @@
+{
+  "name": "file-manager-nodejs",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "/src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Did82/File-Manager-NodeJS.git"
+  },
+  "keywords": ["file-manager", "nodejs", "Did82"],
+  "author": "Did82",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Did82/File-Manager-NodeJS/issues"
+  },
+  "homepage": "https://github.com/Did82/File-Manager-NodeJS#readme"
+}
